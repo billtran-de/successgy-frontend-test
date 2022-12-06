@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../css/Login.css'
 import PropTypes from 'prop-types';
 
+// try log in to see if credentials match and return a token
 async function loginUser(credentials) {
  return fetch('http://127.0.0.1:5000/api/user', {
    method: 'POST',
@@ -17,6 +18,7 @@ export function Login({ setToken }) {
   const [emp_id, setEmpID] = useState();
   const [password, setPassword] = useState();
 
+  // set token after check credentials
   const handleSubmit = async e => {
     e.preventDefault();
     const token = await loginUser({
@@ -31,7 +33,7 @@ export function Login({ setToken }) {
       <h1>Please Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          <p>Username</p>
+          <p>Employee ID</p>
           <input type="text" onChange={e => setEmpID(e.target.value)}/>
         </label>
         <label>
